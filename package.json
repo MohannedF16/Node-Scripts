@@ -1,0 +1,16 @@
+{
+  "name": "user-manager-cli",
+  "version": "1.0.0",
+  "description": "CLI tool to manage users using yargs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["cli", "yargs", "user-management"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "yargs": "^17.7.2"
+  }
+}
