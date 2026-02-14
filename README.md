@@ -13,14 +13,16 @@ npm install
 
 ### Add a new user
 ```bash
-node index.js add <name> <email> [--age <age>]
+node index.js add <id> <name> <email> [--age <age>]
 ```
 
 Examples:
 ```bash
-node index.js add "John Doe" "john@example.com" --age 30
-node index.js add "Jane Smith" "jane@example.com"
+node index.js add "user123" "John Doe" "john@example.com" --age 30
+node index.js add "user456" "Jane Smith" "jane@example.com"
 ```
+
+**Note**: The ID must be unique. If the ID already exists, the command will exit with an error.
 
 ### List all users
 ```bash
@@ -34,7 +36,7 @@ node index.js show <id>
 
 Example:
 ```bash
-node index.js show 1234567890123
+node index.js show user123
 ```
 
 ### Delete a user
@@ -44,7 +46,12 @@ node index.js delete <id>
 
 Example:
 ```bash
-node index.js delete 1234567890123
+node index.js delete user123
+```
+
+### Delete all users
+```bash
+node index.js delete-all
 ```
 
 ### Get help
@@ -56,18 +63,18 @@ node index.js <command> --help
 ## Data Storage
 
 Users are stored in `users.json` in the project directory. Each user has:
-- `id`: Unique identifier (timestamp)
-- `name`: User name
-- `email`: User email
+- `id`: Unique identifier (required, must be unique)
+- `name`: User name (required)
+- `email`: User email (required)
 - `age`: User age (optional)
-- `createdAt`: Creation timestamp
+- `createdAt`: Creation timestamp (auto-generated)
 
 ## Examples
 
 1. Add users:
 ```bash
-node index.js add "Alice Johnson" "alice@example.com" --age 25
-node index.js add "Bob Wilson" "bob@example.com"
+node index.js add "alice123" "Alice Johnson" "alice@example.com" --age 25
+node index.js add "bob456" "Bob Wilson" "bob@example.com"
 ```
 
 2. List all users:
@@ -77,10 +84,26 @@ node index.js list
 
 3. Show specific user:
 ```bash
-node index.js show <user-id-from-list>
+node index.js show alice123
 ```
 
 4. Delete a user:
 ```bash
-node index.js delete <user-id-from-list>
+node index.js delete alice123
 ```
+
+5. Delete all users:
+```bash
+node index.js delete-all
+```
+
+## Error Handling
+
+The CLI provides clear error messages with `[OK]` prefix for all operations:
+- Duplicate user IDs when adding
+- User not found when showing/deleting
+- Empty user list when listing
+
+## Repository
+
+This project is deployed on GitHub: https://github.com/MohannedF16/Node-Scripts
